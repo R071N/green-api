@@ -17,7 +17,46 @@ img {
     max-width: 100%;
 }
 
-// body {
-//     font-family: 'BlenderPro', 'Shanghai', sans-serif;
+body {
+    // font-family: 'BlenderPro', 'Shanghai', sans-serif;
+    color: #fff;
+    background-color: #111b21;
+}
 
-// }
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(188, 255, 188);
+}
+
+.form {
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    background-color: #222e35;
+
+    &__label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+    }
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './chat.scss'
 
 interface ChatProps {
   idInstance: string;
@@ -74,7 +75,7 @@ const Chat: React.FC<ChatProps> = ({
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         setNewMessage('');
       } else {
-        console.error('Failed to send message');
+        console.error('Не удалось отправить сообщение');
       }
     } catch (error) {
       console.error(error);
@@ -82,19 +83,28 @@ const Chat: React.FC<ChatProps> = ({
   };
 
   return (
-    <div>
-      <ul>
+    <div className="chat">
+      <ul className="chat__messages">
+      <div className="spacer"></div>
         {messages.map((message, index) => (
-          <li key={index}>{message}</li>
+          <li className="chat__message" key={index}>
+            {message}
+          </li>
         ))}
       </ul>
-      <input
-        type="text"
-        value={newMessage}
-        onChange={(event) => setNewMessage(event.target.value)}
-      />
-      <button onClick={handleSendMessage}>Send</button>
+      <div className="chat__input-container">
+        <input
+          className="chat__input"
+          type="text"
+          value={newMessage}
+          onChange={(event) => setNewMessage(event.target.value)}
+        />
+        <button className="chat__send" onClick={handleSendMessage}>
+          Отправить
+        </button>
+      </div>
     </div>
+
   );
 };
 

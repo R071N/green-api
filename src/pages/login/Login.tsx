@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import CreateChat from '../createChat/CreateChat';
-import './login.scss'
 
 const Login = () => {
   const [idInstance, setIdInstance] = useState('');
@@ -30,26 +29,26 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form className='form' onSubmit={handleSubmit}>
+      <label className='form__label'>
         idInstance:
         <input
-          type="text"
+          className='form__input'
+          type='text'
           value={idInstance}
           onChange={(event) => setIdInstance(event.target.value)}
         />
       </label>
-      <br />
-      <label>
+      <label className='form__label'>
         apiTokenInstance:
         <input
-          type="password"
+          className='form__input'
+          type='password'
           value={apiTokenInstance}
           onChange={(event) => setApiTokenInstance(event.target.value)}
         />
       </label>
-      <br />
-      <input type="submit" value="Submit" />
+      <input className='btn form__submit' type='submit' value='Авторизация' />
     </form>
   );
 };
