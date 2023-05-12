@@ -1,0 +1,52 @@
+.chat {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    height: 100vh;
+
+    &__messages {
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow-y: auto;
+        background-image: url('./image/chatback.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: black;
+    }
+
+    &__message {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 10px;
+        width: fit-content;
+        max-width: 80%;
+        background-color: #dcf8c6;
+    }
+
+    &__input-container {
+        display: flex;
+    }
+
+    &__input {
+        padding: 10px;
+        flex-grow: 1;
+        outline: none;
+        border: none;
+        border-radius: 8px 0 0 0;
+    }
+
+    &__send {
+        padding: 10px;
+        border: none;
+        background-color: rgb(188, 255, 188);
+        border-radius: 0 8px 0 0;
+    }
+}
+
+.spacer {
+    flex-grow: 1;
+}

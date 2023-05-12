@@ -28,18 +28,22 @@ const CreateChat: React.FC<CreateChatProps> = ({
   }
 
   return (
-    <div>
-      <label>
-        Введите номер контакта:
+    <div className='form'>
+      <label className='form__label'>
+        Введите телефон контакта:
         <input
-          type="tel"
+          className='form__input'
+          type='tel'
           value={recipientPhoneNumber}
           onChange={(event) => setRecipientPhoneNumber(event.target.value)}
         />
       </label>
       <br />
-      <button onClick={handleCreateChat}>Создать новый чат</button>
+      <button className='btn form__submit' onClick={handleCreateChat}>
+        Создать новый чат
+      </button>
     </div>
+
   );
 };
 
