@@ -6,13 +6,14 @@
     height: 100vh;
 
     &__messages {
+        list-style: none;
         margin: 0;
         padding: 10px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
         overflow-y: auto;
-        background-image: url('./image/chatback.webp');
+        background-image: url('../image/chatback.webp');
         background-size: cover;
         background-repeat: no-repeat;
         color: black;
@@ -24,7 +25,12 @@
         border-radius: 10px;
         width: fit-content;
         max-width: 80%;
+        align-self: start;
         background-color: #dcf8c6;
+    }
+
+    &__message--sent {
+        align-self: flex-end;
     }
 
     &__input-container {

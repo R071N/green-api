@@ -34,7 +34,9 @@ const CreateChat: React.FC<CreateChatProps> = ({
         <input
           className='form__input'
           type='tel'
+          maxLength={11}
           value={recipientPhoneNumber}
+          placeholder='79994442211'
           onChange={(event) => setRecipientPhoneNumber(event.target.value)}
         />
       </label>
