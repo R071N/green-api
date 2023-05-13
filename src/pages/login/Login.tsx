@@ -5,6 +5,7 @@ const Login = () => {
   const [idInstance, setIdInstance] = useState('');
   const [apiTokenInstance, setApiTokenInstance] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -15,6 +16,7 @@ const Login = () => {
       if (response.ok) {
         setIsLoggedIn(true);
       } else {
+        setErrorMessage('Неверный IdInstance или ApiTokenInstance');
         alert('Неверный IdInstance или ApiTokenInstance');
       }
     } catch (error) {
@@ -49,6 +51,7 @@ const Login = () => {
         />
       </label>
       <input className='btn form__submit' type='submit' value='Авторизация' />
+      <p style={{ color: 'red' }}>{errorMessage}</p>
     </form>
   );
 };

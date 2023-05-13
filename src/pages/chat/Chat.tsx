@@ -12,7 +12,7 @@ const Chat: React.FC<ChatProps> = ({
   apiTokenInstance,
   recipientPhoneNumber,
 }) => {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<{ text: string, isSent: boolean }[]>([]);
   const [newMessage, setNewMessage] = useState('');
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Chat: React.FC<ChatProps> = ({
             ) {
               setMessages((prevMessages) => [
                 ...prevMessages,
-                notification.body.messageData.textMessageData.textMessage,
+                { text: notification.body.messageData.textMessageData.textMessage, isSent: false },
               ]);
             }
             await fetch(
@@ -72,7 +72,7 @@ const Chat: React.FC<ChatProps> = ({
         }
       );
       if (response.ok) {
-        setMessages((prevMessages) => [...prevMessages, newMessage]);
+        setMessages((prevMessages) => [...prevMessages, { text: newMessage, isSent: true }]);
         setNewMessage('');
       } else {
         console.error('Не удалось отправить сообщение');
@@ -83,28 +83,27 @@ const Chat: React.FC<ChatProps> = ({
   };
 
   return (
-    <div className="chat">
-      <ul className="chat__messages">
-      <div className="spacer"></div>
+    <div className='chat'>
+      <ul className='chat__messages'>
+        <div className='spacer'></div>
         {messages.map((message, index) => (
-          <li className="chat__message" key={index}>
-            {message}
+          <li className={`chat__message ${message.isSent ? 'chat__message--sent' : ''}`} key={index}>
+            {message.text}
           </li>
         ))}
       </ul>
-      <div className="chat__input-container">
+      <div className='chat__input-container'>
         <input
-          className="chat__input"
-          type="text"
+          className='chat__input'
+          type='text'
           value={newMessage}
           onChange={(event) => setNewMessage(event.target.value)}
         />
-        <button className="chat__send" onClick={handleSendMessage}>
+        <button className='chat__send' onClick={handleSendMessage}>
           Отправить
         </button>
       </div>
     </div>
-
   );
 };
 
